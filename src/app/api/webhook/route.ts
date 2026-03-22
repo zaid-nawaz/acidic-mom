@@ -48,4 +48,3 @@ export async function POST(req: NextRequest) {
     return new Response('Error verifying webhook', { status: 400 })
   }
 }
-// ngrok http --url=https://endosporously-cozies-jannette.ngrok-free.dev 3000
