@@ -1,7 +1,8 @@
 import axios from "axios";
 import { inngest } from "./client";
 import { prisma } from "@/lib/db";
-import { YoutubeTranscript } from "youtube-transcript";
+// import { YoutubeTranscript } from "youtube-transcript";
+import { YouTubeTranscriptApi } from '@playzone/youtube-transcript';
 
 export const genaiFunction = inngest.createFunction(
   { id: "genai-backend" },
@@ -10,8 +11,9 @@ export const genaiFunction = inngest.createFunction(
 
 
     const text = await step.run("fetch-transcript", async () => {
-      const transcript = await YoutubeTranscript.fetchTranscript(event.data.video_id);
-      return transcript.map(t => t.text).join(' ');
+        const api = new YouTubeTranscriptApi();
+        const transcript = await api.fetch(event.data.video_id);
+        return transcript.snippets[0].text
     });
 
     await step.run("get-genai-content", async () => {
