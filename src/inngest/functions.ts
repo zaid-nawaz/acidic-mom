@@ -1,18 +1,24 @@
 import axios from "axios";
 import { inngest } from "./client";
 import { prisma } from "@/lib/db";
+import { YoutubeTranscript } from "youtube-transcript";
 
 export const genaiFunction = inngest.createFunction(
   { id: "genai-backend" },
   { event: "genai.backend/run" },
   async ({ event, step }) => {
 
+
+    const text = await step.run("fetch-transcript", async () => {
+      const transcript = await YoutubeTranscript.fetchTranscript(event.data.video_id);
+      return transcript.map(t => t.text).join(' ');
+    });
+
     await step.run("get-genai-content", async () => {
-        // const question_response = await axios.post("http://localhost:3000/api/mcq",{
-        //     video_id : event.data.video_id
-        // })
-        const question_response = await axios.post("https://acidic-mom-production.up.railway.app/generate_mcq",{
-            video_id : event.data.video_id
+        
+
+        const question_response = await axios.post(`${process.env.FASTAPI_URL}/generate_mcq`,{
+            transcript_text : text
         })
         
         const questions = question_response.data.mcqs;

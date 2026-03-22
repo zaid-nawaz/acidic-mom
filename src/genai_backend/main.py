@@ -14,7 +14,7 @@ gemini_client = genai.Client(api_key=GOOGLE_API_KEY)
 app = FastAPI()
 
 class VideoRequest(BaseModel):
-    video_id: str
+    transcript_text: str
 
 class MCQ(BaseModel):
     question: str
@@ -27,12 +27,12 @@ class MCQResponse(BaseModel):
 @app.post("/generate_mcq", response_model=MCQResponse)
 async def generate_mcq(request: VideoRequest):
     
-    video_id = request.video_id
+    # video_id = request.video_id
     
-    ytt_api = YouTubeTranscriptApi()
-    transcript = ytt_api.fetch(video_id,languages=['en','hi'])
-    text_content = " ".join([t.text for t in transcript])
-    
+    # ytt_api = YouTubeTranscriptApi()
+    # transcript = ytt_api.fetch(video_id,languages=['en','hi'])
+    # text_content = " ".join([t.text for t in transcript])
+    text_content = request.transcript_text;
  
     SYSTEM_PROMPT = f"""
     The following text is a lecture transcript (could be in Hindi or English). 
