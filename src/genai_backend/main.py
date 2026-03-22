@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel 
 from typing import List
 from youtube_transcript_api import YouTubeTranscriptApi
+from youtube_transcript_api._proxies import WebshareProxyConfig
 from google import genai
 import os
 from dotenv import load_dotenv
@@ -27,12 +28,16 @@ class MCQResponse(BaseModel):
 @app.post("/generate_mcq", response_model=MCQResponse)
 async def generate_mcq(request: VideoRequest):
     
-    # video_id = request.video_id
+    video_id = request.video_id
     
-    # ytt_api = YouTubeTranscriptApi()
-    # transcript = ytt_api.fetch(video_id,languages=['en','hi'])
-    # text_content = " ".join([t.text for t in transcript])
-    text_content = request.transcript_text;
+    ytt_api = YouTubeTranscriptApi(
+    proxy_config=WebshareProxyConfig(
+        proxy_username=os.environ.get("WEBSHARE_USERNAME"),
+        proxy_password=os.environ.get("WEBSHARE_PASSWORD"),
+    )
+)
+    transcript = ytt_api.fetch(video_id,languages=['en','hi'])
+    text_content = " ".join([t.text for t in transcript])
  
     SYSTEM_PROMPT = f"""
     The following text is a lecture transcript (could be in Hindi or English). 
