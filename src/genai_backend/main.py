@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel 
 from typing import List
 from youtube_transcript_api import YouTubeTranscriptApi
-from youtube_transcript_api._proxies import WebshareProxyConfig
+from youtube_transcript_api.proxies import WebshareProxyConfig
 from google import genai
 import os
 from dotenv import load_dotenv
