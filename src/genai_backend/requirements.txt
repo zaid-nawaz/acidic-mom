@@ -3,3 +3,4 @@ uvicorn
 youtube-transcript-api==1.0.0
 google-genai
 python-dotenv
+yt_dlp
