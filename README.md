@@ -1,4 +1,4 @@
-#  Acidic Mom — Structured Learning from YouTube Playlists
+#  Quinn — Structured Learning from YouTube Playlists
 
 > Turn any YouTube playlist into a structured course with AI-generated quizzes after every lecture to reinforce what you've learned.
 
@@ -8,7 +8,7 @@
 
 ##  What It Does
 
-Most people passively watch YouTube tutorials without retaining much. Acidic Mom fixes that by wrapping any YouTube playlist in a lightweight learning layer by tracking your progress through lectures and testing your understanding after each one using AI-generated questions.
+Most people passively watch YouTube tutorials without retaining much. Quinn fixes that by wrapping any YouTube playlist in a lightweight learning layer by tracking your progress through lectures and testing your understanding after each one using AI-generated questions.
 
 Just paste a playlist URL and start learning. No course creation, no manual setup.
 
