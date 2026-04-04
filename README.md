@@ -103,8 +103,8 @@ YouTube caption extraction and the Gemini integration are handled in Python. Kee
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/zaid-nawaz/acidic-mom.git
-cd acidic-mom
+git clone https://github.com/zaid-nawaz/quinn.git
+cd quinn
 ```
 
 ### 2. Set up environment variables
@@ -167,7 +167,7 @@ Copy the ngrok URL and set it as your Clerk webhook endpoint in the Clerk dashbo
 ##  Project Structure
 
 ```
-acidic-mom/
+quinn/
 ├── src/
 │   └── app/                        # Next.js App Router
 │       ├── actions/                # Server actions
