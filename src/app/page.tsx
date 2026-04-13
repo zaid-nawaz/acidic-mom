@@ -6,7 +6,7 @@ export default function Home() {
       {/* Hero Section */}
       <div className="text-center max-w-2xl">
         <h1 className="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-linear-to-r from-blue-600 to-purple-600">
-          Welcome to Acidic Mom
+          Welcome to Quinn
         </h1>
         <p className="text-lg text-gray-600 mb-8">
           Learn smarter with AI-powered insights, curated video lessons, and interactive quizzes.
