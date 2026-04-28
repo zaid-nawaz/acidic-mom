@@ -5,8 +5,10 @@ import { prisma } from "@/lib/db";
 // import { YouTubeTranscriptApi } from '@playzone/youtube-transcript';
 
 export const genaiFunction = inngest.createFunction(
-  { id: "genai-backend" },
-  { event: "genai.backend/run" },
+{ 
+  id: "genai-backend",
+  triggers: [{ event: "genai.backend/run" }]
+},
   async ({ event, step }) => {
 
 
